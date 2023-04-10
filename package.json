@@ -1,0 +1,11 @@
+{
+  "name": "4p02_winter_2023_maps",
+  "version": "1.0.0",
+  "description": "Professor Naser Ezzati-Jivan, Winter 2023 <br><br>\r Create an interactive map of the museum that visitors can use to navigate and explore the exhibits. The map could include information such as exhibit descriptions, locations of restrooms, and points of interest.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
