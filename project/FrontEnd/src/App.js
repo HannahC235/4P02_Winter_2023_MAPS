@@ -3,8 +3,8 @@ import './default/styles/map.css';
 import './default/styles/grid.css';
 import './default/styles/bootstrap.css';
 import './default/styles/print.css';
-import './default/styles/queries.css';
-import './default/styles/screen.css';
+//import './default/styles/queries.css';
+//import './default/styles/screen.css';
 
 // pages
 import Home from "./pages/Home"
@@ -14,18 +14,11 @@ import Footer from "./pages/Footer"
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav>
-      <Link to="/">Header</Link>
-      <Link to="/">Home</Link>
-      <Link to="/">Footer</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/" element={<Header />} />
-        <Route path="/" element={<Footer />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <Home />
+      <Footer />
+    </div>
+
   );
 }
 

@@ -11,6 +11,73 @@ import info from '../default/images/info.svg';
 import en from '../default/images/EN.svg';
 
 const Home = () => {
+
+  function handleClick() {
+    //var modal = document.getElementById("modal1");
+    //var title = document.getElementById("modalTitle");
+
+    //title.innerText = titleData;
+    //modal.style.display = "block";
+  }
+
+  /*
+  <script>
+    var modal = document.getElementById("modal1");
+    var title = document.getElementById("modalTitle");
+    var span = document.getElementById("close");
+
+    // Display the modal.
+    function displayModal(titleData) {
+      title.innerText = titleData;
+      modal.style.display = "block";
+    }
+
+    // Hides the modal on clicking the X.
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    var modalInfo = document.getElementById("modalInfo");
+    var spanInfo = document.getElementById("closeInfo");
+
+    // Display the modal.
+    function displayInfo() {
+      modalInfo.style.display = "block";
+    }
+
+    // Hides the modal on clicking the X.
+    spanInfo.onclick = function () {
+      modalInfo.style.display = "none";
+    };
+
+    var modalLang = document.getElementById("modalLang");
+    var spanLang = document.getElementById("closeLang");
+
+    // Display the modal.
+    function displayLang() {
+      modalLang.style.display = "block";
+    }
+
+    // Hides the modal on clicking the X.
+    spanLang.onclick = function () {
+      modalLang.style.display = "none";
+    };
+
+    // Hides the modal when clicking outside it.
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+      if (event.target == modalInfo) {
+        modalInfo.style.display = "none";
+      }
+      if (event.target == modalLang) {
+        modalLang.style.display = "none";
+      }
+    };
+  </script>
+  */
+
   return (
     <div>
       <section id="content-container" class="inside">
@@ -32,7 +99,7 @@ const Home = () => {
             class="icon"
             src={icon1}
             alt="Arrow head"
-            onClick="displayModal(1)"
+            onClick={handleClick}//"displayModal(1)"
             role="button"
           />
           <img
