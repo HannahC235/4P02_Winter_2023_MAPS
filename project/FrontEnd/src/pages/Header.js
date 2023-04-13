@@ -1,10 +1,3 @@
-import './default/styles/map.css';
-import './default/styles/grid.css';
-import './default/styles/bootstrap.css';
-import './default/styles/print.css';
-import './default/styles/queries.css';
-import './default/styles/screen.css';
-
 const Header = () => {
     return (
         <header id="header">
