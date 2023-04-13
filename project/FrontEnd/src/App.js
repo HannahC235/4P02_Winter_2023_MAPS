@@ -3,27 +3,27 @@ import './default/styles/map.css';
 import './default/styles/grid.css';
 import './default/styles/bootstrap.css';
 import './default/styles/print.css';
-//import './default/styles/queries.css';
-//import './default/styles/screen.css';
+import './default/styles/queries.css';
+import './default/styles/screen.css';
 
 // pages
 import Home from "./pages/Home"
-import Create from "./pages/Create"
-import Update from "./pages/Update"
+import Header from "./pages/Header"
+import Footer from "./pages/Footer"
 
 
 function App() {
   return (
     <BrowserRouter>
       <nav>
-        <h1>Supa Smoothies</h1>
-        <Link to="/">Home</Link>
-        <Link to="/create">Create New Smoothie</Link>
+      <Link to="/">Header</Link>
+      <Link to="/">Home</Link>
+      <Link to="/">Footer</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/:id" element={<Update />} />
+        <Route path="/" element={<Header />} />
+        <Route path="/" element={<Footer />} />
       </Routes>
     </BrowserRouter>
   );
