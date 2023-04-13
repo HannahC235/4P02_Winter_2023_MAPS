@@ -7,10 +7,12 @@ import icon4 from '../default/images/icon4.svg';
 import icon5 from '../default/images/icon5.svg';
 import icon6 from '../default/images/icon6.svg';
 import icon7 from '../default/images/icon7.svg';
+import info from '../default/images/info.svg';
+import en from '../default/images/EN.svg';
 
 const Home = () => {
   return (
-    <div className="page home">
+    <div>
       <section id="content-container" class="inside">
         <div id="interactiveMap">
           <picture>
@@ -91,7 +93,7 @@ const Home = () => {
         <img
           id="info"
           class="ui"
-          src="shared/skins/default/images/info.svg"
+          src={info}
           alt="Information icon"
           onClick="displayInfo()"
           role="button"
@@ -100,7 +102,7 @@ const Home = () => {
         <img
           id="en"
           class="ui"
-          src="shared/skins/default/images/EN.svg"
+          src={en}
           alt="Language select icon"
           onClick="displayLang()"
           role="button"
