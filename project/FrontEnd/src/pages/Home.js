@@ -12,13 +12,18 @@ import en from '../default/images/EN.svg';
 
 const Home = () => {
 
-  function handleClick() {
-    //var modal = document.getElementById("modal1");
-    //var title = document.getElementById("modalTitle");
+  var modal = document.getElementById("modal1");
+  var title = document.getElementById("modalTitle");
+  var span = document.getElementById("close");
 
-    //title.innerText = titleData;
-    //modal.style.display = "block";
+  function displayModal() {
+    title.innerText = "Test";
+    modal.style.display = "block";
   }
+
+  /*function hideModal() {
+    modal.style.display = "none";
+  }*/
 
   /*
   <script>
@@ -99,7 +104,7 @@ const Home = () => {
             class="icon"
             src={icon1}
             alt="Arrow head"
-            onClick={handleClick}//"displayModal(1)"
+            onClick={displayModal}//"displayModal(1)"
             role="button"
           />
           <img
