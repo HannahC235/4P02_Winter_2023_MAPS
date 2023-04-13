@@ -1,5 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import './default/styles/map.css';
+import './default/styles/grid.css';
+import './default/styles/bootstrap.css';
+import './default/styles/print.css';
+//import './default/styles/queries.css';
+//import './default/styles/screen.css';
 
 // pages
 import Home from "./pages/Home"

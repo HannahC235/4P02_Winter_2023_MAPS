@@ -1,5 +1,12 @@
 import mapVertical from '../default/images/mapVertical.svg';
 import map from '../default/images/map.svg';
+import icon1 from '../default/images/icon1.svg';
+import icon2 from '../default/images/icon2.svg';
+import icon3 from '../default/images/icon3.svg';
+import icon4 from '../default/images/icon4.svg';
+import icon5 from '../default/images/icon5.svg';
+import icon6 from '../default/images/icon6.svg';
+import icon7 from '../default/images/icon7.svg';
 
 const Home = () => {
   return (
@@ -21,7 +28,7 @@ const Home = () => {
           <img
             id="icon1"
             class="icon"
-            src="shared/skins/default/images/icon1.svg"
+            src={icon1}
             alt="Arrow head"
             onClick="displayModal(1)"
             role="button"
@@ -29,7 +36,7 @@ const Home = () => {
           <img
             id="icon2"
             class="icon"
-            src="shared/skins/default/images/icon2.svg"
+            src={icon2}
             alt="Flag of the United Kingdom"
             onClick="displayModal(2)"
             role="button"
@@ -37,7 +44,7 @@ const Home = () => {
           <img
             id="icon3"
             class="icon"
-            src="shared/skins/default/images/icon3.svg"
+            src={icon3}
             alt=""
             onClick="displayModal(3)"
             role="button"
@@ -45,7 +52,7 @@ const Home = () => {
           <img
             id="icon4"
             class="icon"
-            src="shared/skins/default/images/icon4.svg"
+            src={icon4}
             alt="Cannon"
             onClick="displayModal(4)"
             role="button"
@@ -53,7 +60,7 @@ const Home = () => {
           <img
             id="icon5"
             class="icon"
-            src="shared/skins/default/images/icon5.svg"
+            src={icon5}
             alt=""
             onClick="displayModal(5)"
             role="button"
@@ -61,7 +68,7 @@ const Home = () => {
           <img
             id="icon6"
             class="icon"
-            src="shared/skins/default/images/icon6.svg"
+            src={icon6}
             alt="Monument"
             onClick="displayModal(6)"
             role="button"
@@ -69,7 +76,7 @@ const Home = () => {
           <img
             id="icon7"
             class="icon"
-            src="shared/skins/default/images/icon7.svg"
+            src={icon7}
             alt="Grapes"
             onClick="displayModal(7)"
             role="button"
@@ -155,6 +162,43 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <div id="modalInfo" class="modal">
+        <div class="modal-content">
+          <span id="closeInfo" class="close">&times;</span>
+          <div id="menu-button-container"></div>
+          <h1>Hours of Operation:</h1>
+          <p>
+            Open every day from 1 pm - 5 pm November through April<br />
+            (10 am - 5 pm May through October)<br />
+            The <b>Museum is closed</b> on the following holidays: Good Friday,
+            Easter Sunday, Thanksgiving Day, and during the Christmas season
+            between December 18th and January 1st.<br />
+            <b>PARKING:</b> Free street parking in available out front for Museum
+            patrons, but it is limited. More free street parking can be found on
+            both Castlereagh and Davy Streets. Paid parking lots are available on
+            Platoff Street, at Fort George and at the Court House.
+          </p>
+          <h1>Admissions:</h1>
+          <p>
+            Adults - $5<br />
+            Seniors (60+) - $3<br />
+            Students (full-time) - $2<br />
+            Age 18 and under - FREE
+          </p>
+
+          <h1>Location:</h1>
+          <p>The museum is located on 43 Castlereagh Street.</p>
+        </div>
+      </div>
+
+      <div id="modalLang" class="modal">
+        <div id="modalLang-content" class="modal-content">
+          <span id="closeLang" class="close">&times;</span>
+          <button class="buttonLang">English</button>
+          <button class="buttonLang">Français</button>
+        </div>
+      </div>
     </div>
   )
 }
