@@ -12,18 +12,34 @@ import en from '../default/images/EN.svg';
 
 const Home = () => {
 
-  var modal = document.getElementById("modal1");
-  var title = document.getElementById("modalTitle");
-  var span = document.getElementById("close");
-
   function displayModal() {
+    var modal = document.getElementById("modal1");
+    var title = document.getElementById("modalTitle");
+
     title.innerText = "Test";
     modal.style.display = "block";
   }
 
-  /*function hideModal() {
+  function hideModal() {
+    var modal = document.getElementById("modal1");
+    //var span = document.getElementById("close");
+
     modal.style.display = "none";
-  }*/
+  }
+
+  // Display the modal.
+  function displayInfo() {
+    var modalInfo = document.getElementById("modalInfo");
+    //var spanInfo = document.getElementById("closeInfo");
+
+    modalInfo.style.display = "block";
+  }
+
+  // Hides the modal on clicking the X.
+  function hideInfo() {
+    var modalInfo = document.getElementById("modalInfo");
+    modalInfo.style.display = "none";
+  };
 
   /*
   <script>
@@ -112,7 +128,7 @@ const Home = () => {
             class="icon"
             src={icon2}
             alt="Flag of the United Kingdom"
-            onClick="displayModal(2)"
+            onClick={displayModal}//"displayModal(2)"
             role="button"
           />
           <img
@@ -120,7 +136,7 @@ const Home = () => {
             class="icon"
             src={icon3}
             alt=""
-            onClick="displayModal(3)"
+            onClick={displayModal}//"displayModal(3)"
             role="button"
           />
           <img
@@ -128,7 +144,7 @@ const Home = () => {
             class="icon"
             src={icon4}
             alt="Cannon"
-            onClick="displayModal(4)"
+            onClick={displayModal}//"displayModal(4)"
             role="button"
           />
           <img
@@ -136,7 +152,7 @@ const Home = () => {
             class="icon"
             src={icon5}
             alt=""
-            onClick="displayModal(5)"
+            onClick={displayModal}//"displayModal(5)"
             role="button"
           />
           <img
@@ -144,7 +160,7 @@ const Home = () => {
             class="icon"
             src={icon6}
             alt="Monument"
-            onClick="displayModal(6)"
+            onClick={displayModal}//"displayModal(6)"
             role="button"
           />
           <img
@@ -152,7 +168,7 @@ const Home = () => {
             class="icon"
             src={icon7}
             alt="Grapes"
-            onClick="displayModal(7)"
+            onClick={displayModal}//"displayModal(7)"
             role="button"
           />
           <h1 id="icon8" onClick="displayModal(8)" role="button">Memorial Hall</h1>
@@ -167,7 +183,7 @@ const Home = () => {
           class="ui"
           src={info}
           alt="Information icon"
-          onClick="displayInfo()"
+          onClick={displayInfo}//"displayInfo()"
           role="button"
         />
 
@@ -182,7 +198,7 @@ const Home = () => {
 
         <div id="modal1" class="modal">
           <div class="modal-content">
-            <span id="close" class="close">&times;</span>
+            <span id="close" class="close" onClick={hideModal}>&times;</span>
             <h1 id="modalTitle"></h1>
             <p>
               Native people have lived in Niagara for 11 thousand years, a
@@ -201,7 +217,7 @@ const Home = () => {
 
         <div id="modalInfo" class="modal">
           <div class="modal-content">
-            <span id="closeInfo" class="close">&times;</span>
+            <span id="closeInfo" class="close" onClick={hideInfo}>&times;</span>
             <div id="menu-button-container"></div>
             <h1>Hours of Operation:</h1>
             <p>
@@ -236,43 +252,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <div id="modalInfo" class="modal">
-        <div class="modal-content">
-          <span id="closeInfo" class="close">&times;</span>
-          <div id="menu-button-container"></div>
-          <h1>Hours of Operation:</h1>
-          <p>
-            Open every day from 1 pm - 5 pm November through April<br />
-            (10 am - 5 pm May through October)<br />
-            The <b>Museum is closed</b> on the following holidays: Good Friday,
-            Easter Sunday, Thanksgiving Day, and during the Christmas season
-            between December 18th and January 1st.<br />
-            <b>PARKING:</b> Free street parking in available out front for Museum
-            patrons, but it is limited. More free street parking can be found on
-            both Castlereagh and Davy Streets. Paid parking lots are available on
-            Platoff Street, at Fort George and at the Court House.
-          </p>
-          <h1>Admissions:</h1>
-          <p>
-            Adults - $5<br />
-            Seniors (60+) - $3<br />
-            Students (full-time) - $2<br />
-            Age 18 and under - FREE
-          </p>
-
-          <h1>Location:</h1>
-          <p>The museum is located on 43 Castlereagh Street.</p>
-        </div>
-      </div>
-
-      <div id="modalLang" class="modal">
-        <div id="modalLang-content" class="modal-content">
-          <span id="closeLang" class="close">&times;</span>
-          <button class="buttonLang">English</button>
-          <button class="buttonLang">Français</button>
-        </div>
-      </div>
     </div>
   )
 }
