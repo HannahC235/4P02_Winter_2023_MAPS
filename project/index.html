@@ -8839,7 +8839,7 @@
         class="icon"
         src="shared/skins/default/images/icon1.svg"
         alt="Arrow head"
-        onClick="displayModal(1)"
+        onClick="displayModal(0)"
         role="button"
       />
       <img
@@ -8847,7 +8847,7 @@
         class="icon"
         src="shared/skins/default/images/icon2.svg"
         alt="Flag of the United Kingdom"
-        onClick="displayModal(2)"
+        onClick="displayModal(1)"
         role="button"
       />
       <img
@@ -8855,7 +8855,7 @@
         class="icon"
         src="shared/skins/default/images/icon3.svg"
         alt=""
-        onClick="displayModal(3)"
+        onClick="displayModal(2)"
         role="button"
       />
       <img
@@ -8863,7 +8863,7 @@
         class="icon"
         src="shared/skins/default/images/icon4.svg"
         alt="Cannon"
-        onClick="displayModal(4)"
+        onClick="displayModal(3)"
         role="button"
       />
       <img
@@ -8871,7 +8871,7 @@
         class="icon"
         src="shared/skins/default/images/icon5.svg"
         alt=""
-        onClick="displayModal(5)"
+        onClick="displayModal(4)"
         role="button"
       />
       <img
@@ -8879,7 +8879,7 @@
         class="icon"
         src="shared/skins/default/images/icon6.svg"
         alt="Monument"
-        onClick="displayModal(6)"
+        onClick="displayModal(5)"
         role="button"
       />
       <img
@@ -8887,12 +8887,12 @@
         class="icon"
         src="shared/skins/default/images/icon7.svg"
         alt="Grapes"
-        onClick="displayModal(7)"
+        onClick="displayModal(6)"
         role="button"
       />
-      <h1 id="icon8" onClick="displayModal(8)" role="button">Memorial Hall</h1>
+      <h1 id="icon8" onClick="displayModal(7)" role="button">Memorial Hall</h1>
 
-      <h1 id="icon8-2" onClick="displayModal(8)" role="button">
+      <h1 id="icon8-2" onClick="displayModal(7)" role="button">
         Memorial<br />Hall
       </h1>
     </div>
@@ -8906,7 +8906,7 @@
       onClick="displayInfo()"
       role="button"
     />
-    
+
     <img
       id="en"
       class="ui"
@@ -8920,7 +8920,7 @@
       <div class="modal-content">
         <span id="close" class="close">&times;</span>
         <h1 id="modalTitle"></h1>
-        <p>
+        <p id="modalDescription">
           Native people have lived in Niagara for 11 thousand years, a
           considerable period of time compared to “the discovery of America”
           accomplished by European explorers in the 15th century. These first
@@ -9048,14 +9048,44 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
+    const SUPABASE_URL = "https://lrmeyctmnvxcquqwhbkd.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxybWV5Y3RtbnZ4Y3F1cXdoYmtkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk0MDk5ODYsImV4cCI6MTk5NDk4NTk4Nn0.UVd79YRgO2lPHUXAuZN1m8vj0IA-Wl2Dn3-FoTsjguI";
+
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    var databaseContents;
+
+    async function loadData() {
+      const { data, error } = await _supabase.from("artifact").select("*");
+
+      if (!error) {
+        databaseContents = data;
+        //const parent = document.getElementById("holder");
+
+        /*let contents = "";
+        data.forEach(function (item) {
+          contents += `<div> ${item.artifact_name} <br> ${item.artifact_description}<br><br></div>`;
+        });
+
+        parent.insertAdjacentHTML("beforeend", contents);*/
+        console.log(data);
+        console.log(data[0].artifact_name);
+      }
+    }
+    loadData();
+
     var modal = document.getElementById("modal1");
     var title = document.getElementById("modalTitle");
+    var description = document.getElementById("modalDescription");
     var span = document.getElementById("close");
 
     // Display the modal.
     function displayModal(titleData) {
-      title.innerText = titleData;
+      title.innerText = databaseContents[titleData].artifact_name;
+      description.innerText = databaseContents[titleData].artifact_description;
       modal.style.display = "block";
     }
 
