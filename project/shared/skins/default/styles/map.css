@@ -78,6 +78,10 @@
   position: sticky;
 }
 
+#content-container.inside {
+  min-height: auto;
+}
+
 /* Mobile */
 @media (max-width: 767px) {
   .icon {
@@ -140,52 +144,54 @@
   #info {
     bottom: 0;
     left: 0;
+    padding: 2px;
   }
 
   #en {
     bottom: 0;
     left: 14%;
+    padding: 2px;
   }
 }
 
 /* Not mobile */
 @media (min-width: 768px) {
   .icon {
-    width: 8%;
+    width: 7%;
   }
 
   #icon1 {
-    top: 46%;
+    top: 50%;
     left: 15%;
   }
 
   #icon2 {
-    top: 46%;
+    top: 50%;
     left: 25%;
   }
 
   #icon3 {
-    top: 64%;
+    top: 66%;
     left: 25%;
   }
 
   #icon4 {
-    top: 64%;
+    top: 66%;
     left: 35%;
   }
 
   #icon5 {
-    top: 64%;
+    top: 66%;
     left: 45%;
   }
 
   #icon6 {
-    top: 64%;
+    top: 66%;
     left: 55%;
   }
 
   #icon7 {
-    top: 60%;
+    top: 62%;
     left: 65%;
   }
 
@@ -210,11 +216,13 @@
   #info {
     bottom: 0;
     left: 0;
+    padding: 4px;
   }
 
   #en {
     bottom: 0;
     left: 7%;
+    padding: 4px;
   }
 
   .close {

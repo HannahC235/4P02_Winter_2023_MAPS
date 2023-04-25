@@ -8901,7 +8901,7 @@
     <img
       id="info"
       class="ui"
-      src="shared/skins/default/images/info.svg"
+      src="shared/skins/default/images/infoNew.svg"
       alt="Information icon"
       onClick="displayInfo()"
       role="button"
@@ -8910,7 +8910,7 @@
     <img
       id="en"
       class="ui"
-      src="shared/skins/default/images/EN.svg"
+      src="shared/skins/default/images/ENNew.svg"
       alt="Language select icon"
       onClick="displayLang()"
       role="button"
@@ -9059,12 +9059,14 @@
     var databaseContents;
 
     async function loadData() {
-      const { data, error } = await _supabase.from("artifact").select("*");
+      const { data, error } = await _supabase.from("exhibit").select("*");
 
       if (!error) {
         databaseContents = data;
+        //console.log(data);
 
-        console.log(data);
+        databaseContents.sort((a, b) => a.exhibit_id - b.exhibit_id);
+        console.log(databaseContents);
       }
     }
     loadData();
@@ -9076,8 +9078,8 @@
 
     // Display the modal.
     function displayModal(titleData) {
-      title.innerText = databaseContents[titleData].artifact_name;
-      description.innerText = databaseContents[titleData].artifact_description;
+      title.innerText = databaseContents[titleData].exhibit_name;
+      description.innerText = databaseContents[titleData].exhibit_description;
       modal.style.display = "block";
     }
 
