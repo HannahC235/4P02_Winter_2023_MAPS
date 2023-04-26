@@ -19,9 +19,20 @@
   margin: auto;
   padding-left: 4%;
   padding-right: 8%;
-  /*padding: 7%;*/
   border: 1px solid #888;
   width: 86%;
+}
+
+#modalImage {
+  display: block;
+  max-height: 50vh !important;
+  /*max-width: 50%;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-content > h1 {
+  margin: 0.45em 0;
 }
 
 .close {
@@ -84,6 +95,14 @@
 
 /* Mobile */
 @media (max-width: 767px) {
+  .modal-content {
+    padding-right: 10%;
+  }
+
+  #modalImage {
+    max-height: 40vh !important;
+  }
+
   .icon {
     width: 15%;
   }

@@ -8897,7 +8897,6 @@
       </h1>
     </div>
 
-    <!-- TODO: More consistent icons -->
     <img
       id="info"
       class="ui"
@@ -8906,7 +8905,7 @@
       onClick="displayInfo()"
       role="button"
     />
-
+    <!--
     <img
       id="en"
       class="ui"
@@ -8915,23 +8914,14 @@
       onClick="displayLang()"
       role="button"
     />
+    -->
 
     <div id="modal1" class="modal">
       <div class="modal-content">
         <span id="close" class="close">&times;</span>
         <h1 id="modalTitle"></h1>
-        <p id="modalDescription">
-          Native people have lived in Niagara for 11 thousand years, a
-          considerable period of time compared to “the discovery of America”
-          accomplished by European explorers in the 15th century. These first
-          nomadic inhabitants practiced hunting and gathering. Over time,
-          indigenous villages became more permanent because of the growing
-          importance in their diet of vegetable cultivation. Around the year
-          1300 distinct nations emerged, including the Neutrals, who inhabited
-          Niagara until their defeat by the Iroquois in 1650. Following their
-          disappearance, the Seneca and the Mississaugas briefly settled in the
-          region.
-        </p>
+        <img id="modalImage" />
+        <p id="modalDescription"></p>
       </div>
     </div>
 
@@ -8964,6 +8954,7 @@
       </div>
     </div>
 
+    <!--
     <div id="modalLang" class="modal">
       <div id="modalLang-content" class="modal-content">
         <span id="closeLang" class="close">&times;</span>
@@ -8971,6 +8962,7 @@
         <button class="buttonLang">Français</button>
       </div>
     </div>
+    -->
   </section>
 
   <footer id="footer-container">
@@ -9073,6 +9065,7 @@
 
     var modal = document.getElementById("modal1");
     var title = document.getElementById("modalTitle");
+    var image = document.getElementById("modalImage");
     var description = document.getElementById("modalDescription");
     var span = document.getElementById("close");
 
@@ -9080,6 +9073,16 @@
     function displayModal(titleData) {
       title.innerText = databaseContents[titleData].exhibit_name;
       description.innerText = databaseContents[titleData].exhibit_description;
+      if (databaseContents[titleData].img_url != null)
+      {
+        image.style.display = "block";
+        //image.style.height = databaseContents[titleData].img_url.naturalHeight;
+        image.src = databaseContents[titleData].img_url;
+      }
+      else
+      {
+        image.style.display = "none";
+      }
       modal.style.display = "block";
     }
 
@@ -9101,7 +9104,7 @@
       modalInfo.style.display = "none";
     };
 
-    var modalLang = document.getElementById("modalLang");
+    /*var modalLang = document.getElementById("modalLang");
     var spanLang = document.getElementById("closeLang");
 
     // Display the modal.
@@ -9112,7 +9115,7 @@
     // Hides the modal on clicking the X.
     spanLang.onclick = function () {
       modalLang.style.display = "none";
-    };
+    };*/
 
     // Hides the modal when clicking outside it.
     window.onclick = function (event) {
@@ -9122,9 +9125,9 @@
       if (event.target == modalInfo) {
         modalInfo.style.display = "none";
       }
-      if (event.target == modalLang) {
+      /*if (event.target == modalLang) {
         modalLang.style.display = "none";
-      }
+      }*/
     };
   </script>
 </html>
