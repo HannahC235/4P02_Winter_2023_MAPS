@@ -19,9 +19,20 @@
   margin: auto;
   padding-left: 4%;
   padding-right: 8%;
-  /*padding: 7%;*/
   border: 1px solid #888;
   width: 86%;
+}
+
+#modalImage {
+  display: block;
+  max-height: 50vh !important;
+  /*max-width: 50%;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-content > h1 {
+  margin: 0.45em 0;
 }
 
 .close {
@@ -78,8 +89,20 @@
   position: sticky;
 }
 
+#content-container.inside {
+  min-height: auto;
+}
+
 /* Mobile */
 @media (max-width: 767px) {
+  .modal-content {
+    padding-right: 10%;
+  }
+
+  #modalImage {
+    max-height: 40vh !important;
+  }
+
   .icon {
     width: 15%;
   }
@@ -140,52 +163,54 @@
   #info {
     bottom: 0;
     left: 0;
+    padding: 2px;
   }
 
   #en {
     bottom: 0;
     left: 14%;
+    padding: 2px;
   }
 }
 
 /* Not mobile */
 @media (min-width: 768px) {
   .icon {
-    width: 8%;
+    width: 7%;
   }
 
   #icon1 {
-    top: 46%;
+    top: 50%;
     left: 15%;
   }
 
   #icon2 {
-    top: 46%;
+    top: 50%;
     left: 25%;
   }
 
   #icon3 {
-    top: 64%;
+    top: 66%;
     left: 25%;
   }
 
   #icon4 {
-    top: 64%;
+    top: 66%;
     left: 35%;
   }
 
   #icon5 {
-    top: 64%;
+    top: 66%;
     left: 45%;
   }
 
   #icon6 {
-    top: 64%;
+    top: 66%;
     left: 55%;
   }
 
   #icon7 {
-    top: 60%;
+    top: 62%;
     left: 65%;
   }
 
@@ -210,11 +235,13 @@
   #info {
     bottom: 0;
     left: 0;
+    padding: 4px;
   }
 
   #en {
     bottom: 0;
     left: 7%;
+    padding: 4px;
   }
 
   .close {
