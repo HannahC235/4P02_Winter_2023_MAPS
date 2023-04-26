@@ -100,9 +100,9 @@ const EditArtifact = () => {
                   <div class = 'form_group'>
                     <label for = "associated_exhibit" class = "label"> Associated Exhibit: </label>
                     <select>
-                      {setExhibit.map(option => (
+{/*                       {setArtifact.map(option => (
                         <option key={artifact_id.artifact_id} value={exhibit_id.exhibit_id}>{exhibit_id.label}</option>
-                      ))}
+                      ))} */}
                     </select>
 
                   {/*   <select value={exhibit_id} id="exhibits" class="input_half" 

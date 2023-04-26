@@ -3,6 +3,7 @@ import supabase from "../config/supabaseClient"
 import { Navigate, useNavigate } from "react-router-dom"
 
 const CreateExhibit = () => {
+  const [file, setFile] = useState(null)
   const [exhibit_name, setTitle] = useState('')
   const [exhibit_description, setDescription] = useState('')
   const [relatedPages, setRelatedPages] = useState('')
@@ -14,7 +15,9 @@ const CreateExhibit = () => {
 
 
   const navigate = useNavigate()
-
+    const handleFileChange = (event) => {
+    setFile(event.target.files[0])
+  }
   useEffect(() => {
     const fetchLocations = async () =>{
       const {data, error} = await supabase
@@ -47,9 +50,15 @@ const CreateExhibit = () => {
       setError("Please fill in all required fields")
       return 
     }
-    const {data, error} = await supabase
+    if (file){
+      const{data, error} = await supabase.storage.from("images2").upload(file.name, file)
+      if (error){
+        console.error(error)
+      } else{
+    const imageUrl = data.path
+    const {data: image, error: imageError} = await supabase
     .from('exhibit')
-    .insert([{exhibit_name, exhibit_description, "location_name": selectedLocation}])
+    .insert([{exhibit_name, exhibit_description, "location_name": selectedLocation, "img_url": imageUrl}])
 
     if (error){
         console.log(error)
@@ -62,6 +71,13 @@ const CreateExhibit = () => {
         navigate('/exhibitList.js')
 
     }
+    if (imageError){
+      console.error(imageError)
+    } else{
+      console.log("Image inserted:", image)
+    }
+  }
+}
   }
 
   return (
@@ -117,7 +133,7 @@ const CreateExhibit = () => {
                 </div>
                 <div class = 'form_group'>
                   <label for = "upload_img" class = "label"> Upload Images or Video: </label>
-                  <input class = "input_half" id = "upload_img" type="file" name="upload_img"/>
+                  <input class = "input_half" id = "upload_img" type="file" name="image/*" onChange={handleFileChange}/>
                 </div>
                 <div class = 'form_group'>
                   <label for = "associated_artefact" class = "label"> Associated Artefact: </label>
