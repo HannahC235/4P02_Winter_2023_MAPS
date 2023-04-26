@@ -72,6 +72,7 @@ const CreateArtifact = () => {
         console.log(data)
         setError(null)
         navigate('/')
+        window.location.href = "/artifactList";
 
     }
 

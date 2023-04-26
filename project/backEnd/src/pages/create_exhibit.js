@@ -69,6 +69,7 @@ const CreateExhibit = () => {
         console.log(data)
         setError(null)
         navigate('/exhibitList.js')
+        window.location.href = "/";
 
     }
     if (imageError){
