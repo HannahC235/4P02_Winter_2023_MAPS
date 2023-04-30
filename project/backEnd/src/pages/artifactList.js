@@ -41,9 +41,9 @@ const ArtifactList = () => {
                 <div class="centre">
                     <div class=" tabs">
                     <Link to="/create_artifact" class=" tab blue_tab">CREATE ARTIFACT</Link>
-                    <Link to ="/create_exhibit" class=" tab red_tab">CREATE EXHIBIT</Link>   
-                    <Link to="/exhibitList" class= "tab blue_tab">EXHIBIT LIST</Link>
-                    <a href="#" class= "tab clear_tab">OPTIONS</a>
+                <Link to ="/create_exhibit" class=" tab red_tab">CREATE EXHIBIT</Link>   
+                <Link to="/" class= "tab blue_tab">EXHIBIT LIST</Link>
+                        <a href="#" class= "tab clear_tab">OPTIONS</a>
                     </div>
                     <table>     
                       <tr>

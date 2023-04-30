@@ -3,6 +3,7 @@ import supabase from "../config/supabaseClient"
 import { useNavigate } from "react-router-dom"
 
 const CreateArtifact = () => {
+  const [file, setFile] = useState(null)
   const [artifact_name, setTitle] = useState('')
   const [artifact_description, setDescription] = useState('')
   const [exhibit_id, setExhibitId] = useState('')
@@ -12,6 +13,9 @@ const CreateArtifact = () => {
   const [exhibit, setExhibit] = useState([]); 
 
   const navigate = useNavigate()
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0])
+  }
 
   useEffect(() => {
     const fetchExhibits = async () =>{
@@ -47,10 +51,17 @@ const CreateArtifact = () => {
       setError("Please fill in all required fields")
       return 
     }
-    const {data, error} = await supabase
-    .from('artifact')
-    .insert([{artifact_name, artifact_description, "exhibit_name": selectedExhibit}
-    ])
+
+    if(file){
+      const{data, error} = await supabase.storage.from("images2").upload(file.name, file)
+      if (error){
+        console.error(error)
+      } else{
+      const imageUrl = data.path
+      const {data: image, error: imageError} = await supabase
+      .from('artifact')
+      .insert([{artifact_name, artifact_description, "exhibit_name": selectedExhibit, "url": imageUrl}
+      ])
 
     if (error){
         console.log(error)
@@ -61,9 +72,32 @@ const CreateArtifact = () => {
         console.log(data)
         setError(null)
         navigate('/')
-        
+        window.location.href = "/artifactList";
 
     }
+
+    if (imageError){
+      console.error(imageError)
+    } else{
+      console.log("Image inserted:", image)
+    }
+
+    /* if(file){
+      const{data, error} = await supabase.storage.from("images2").upload(file.name, file)
+      if (error){
+        console.error(error)
+      } else{
+        const imageUrl = data.path
+        const {data: image, error: imageError} = await supabase.from("artifact").insert({url: imageUrl})
+        if (imageError){
+          console.error(imageError)
+        } else{
+          console.log("Image inserted:", image)
+        }
+      }
+    } */
+  }
+}
   }
 
   return (
@@ -93,8 +127,8 @@ const CreateArtifact = () => {
                     onChange={(e) => setDescription(e.target.value)}/>
                   </div>
                   <div class = 'form_group'>
-                    <label for = "upload_audio" class = "label"> Upload Audio Description: </label>
-                    <input class = "input_half" id = "upload_audio" type="file" name="upload_audio"/>
+                    <label for = "upload_audio" class = "label"> Upload Image: </label>
+                    <input class = "input_half" id = "upload_audio" type="file" accept="image/*" onChange= {handleFileChange}/>
                   </div>  
                   {/*<div class = 'form_group'>
                     <label for = "tags" class = "label"> Tags: </label>
