@@ -2,6 +2,7 @@ import supabase from "../config/supabaseClient"
 import {Link} from "react-router-dom";
 import {useEffect, useState } from "react";
 import Table from "../components/artifact_table"
+import Signout from "../components/signout";
 
 
 const ArtifactList = () => {
@@ -29,7 +30,7 @@ const ArtifactList = () => {
   })
 
   
-   return (
+  return (
     <div className="page home">
         <div class="header">
             <h2 class="title">Manage Artifacts</h2>
@@ -45,23 +46,25 @@ const ArtifactList = () => {
                         <a href="#" class= "tab clear_tab">OPTIONS</a>
                     </div>
                     <table>     
-              <tr>
+                      <tr>
                         <th>Artifact Name</th>
                         <th>Artifact Description</th>
                         <th>Exhibit Name</th>
                         <th></th>
-                    </tr>
-            </table>
+                      </tr>
+                    </table>
               {artifact.map(artifact => (
               <Table key = {artifact.artifact_id} artifact={artifact}/>
                 ))}
-        </div>  
-        </div>   
-           
+                </div>  
+              </div>   
+           )}
 
-)}
-</div>
-   )
+        <div className="main_div" id="logout">
+          <span onClick={Signout}><h4>Logout</h4></span>
+        </div>
+    </div>
+  )
 }
 export default ArtifactList
 

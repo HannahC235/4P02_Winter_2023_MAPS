@@ -113,26 +113,6 @@
       media="screen"
     />
 
-    <!--fa-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="shared/skins/default/styles/fa-main.css"
-      media="screen"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="shared/skins/default/styles/fa-v4-font-face.css"
-      media="screen"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="shared/skins/default/styles/fa-v4-shims.css"
-      media="screen"
-    />
-
     <script
       async=""
       src="https://www.googletagmanager.com/gtm.js?id=GTM-MPDD9FB"
@@ -352,6 +332,7 @@
           srcset="shared/skins/default/images/map.svg"
         />
         <img
+          id="mapImage"
           src="shared/skins/default/images/mapVertical.svg"
           alt="Niagara-on-the-Lake Museum map"
         />
@@ -362,7 +343,7 @@
         class="icon"
         src="shared/skins/default/images/icon1.svg"
         alt="Arrow head"
-        onClick="displayModal(1)"
+        onClick="displayModal(0)"
         role="button"
       />
       <img
@@ -370,7 +351,7 @@
         class="icon"
         src="shared/skins/default/images/icon2.svg"
         alt="Flag of the United Kingdom"
-        onClick="displayModal(2)"
+        onClick="displayModal(1)"
         role="button"
       />
       <img
@@ -378,7 +359,7 @@
         class="icon"
         src="shared/skins/default/images/icon3.svg"
         alt=""
-        onClick="displayModal(3)"
+        onClick="displayModal(2)"
         role="button"
       />
       <img
@@ -386,7 +367,7 @@
         class="icon"
         src="shared/skins/default/images/icon4.svg"
         alt="Cannon"
-        onClick="displayModal(4)"
+        onClick="displayModal(3)"
         role="button"
       />
       <img
@@ -394,7 +375,7 @@
         class="icon"
         src="shared/skins/default/images/icon5.svg"
         alt=""
-        onClick="displayModal(5)"
+        onClick="displayModal(4)"
         role="button"
       />
       <img
@@ -402,7 +383,7 @@
         class="icon"
         src="shared/skins/default/images/icon6.svg"
         alt="Monument"
-        onClick="displayModal(6)"
+        onClick="displayModal(5)"
         role="button"
       />
       <img
@@ -410,50 +391,41 @@
         class="icon"
         src="shared/skins/default/images/icon7.svg"
         alt="Grapes"
-        onClick="displayModal(7)"
+        onClick="displayModal(6)"
         role="button"
       />
-      <h1 id="icon8" onClick="displayModal(8)" role="button">Memorial Hall</h1>
+      <h1 id="icon8" onClick="displayModal(7)" role="button">Memorial Hall</h1>
 
-      <h1 id="icon8-2" onClick="displayModal(8)" role="button">
+      <h1 id="icon8-2" onClick="displayModal(7)" role="button">
         Memorial<br />Hall
       </h1>
     </div>
 
-    <!-- TODO: More consistent icons -->
     <img
       id="info"
       class="ui"
-      src="shared/skins/default/images/info.svg"
+      src="shared/skins/default/images/infoNew.svg"
       alt="Information icon"
       onClick="displayInfo()"
       role="button"
     />
+    <!--
     <img
       id="en"
       class="ui"
-      src="shared/skins/default/images/EN.svg"
+      src="shared/skins/default/images/ENNew.svg"
       alt="Language select icon"
       onClick="displayLang()"
       role="button"
     />
+    -->
 
     <div id="modal1" class="modal">
       <div class="modal-content">
         <span id="close" class="close">&times;</span>
         <h1 id="modalTitle"></h1>
-        <p>
-          Native people have lived in Niagara for 11 thousand years, a
-          considerable period of time compared to “the discovery of America”
-          accomplished by European explorers in the 15th century. These first
-          nomadic inhabitants practiced hunting and gathering. Over time,
-          indigenous villages became more permanent because of the growing
-          importance in their diet of vegetable cultivation. Around the year
-          1300 distinct nations emerged, including the Neutrals, who inhabited
-          Niagara until their defeat by the Iroquois in 1650. Following their
-          disappearance, the Seneca and the Mississaugas briefly settled in the
-          region.
-        </p>
+        <img id="modalImage" />
+        <p id="modalDescription"></p>
       </div>
     </div>
 
@@ -486,6 +458,7 @@
       </div>
     </div>
 
+    <!--
     <div id="modalLang" class="modal">
       <div id="modalLang-content" class="modal-content">
         <span id="closeLang" class="close">&times;</span>
@@ -493,6 +466,7 @@
         <button class="buttonLang">Français</button>
       </div>
     </div>
+    -->
   </section>
 
   <footer id="footer-container">
@@ -529,14 +503,49 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
+    const SUPABASE_URL = "https://lrmeyctmnvxcquqwhbkd.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxybWV5Y3RtbnZ4Y3F1cXdoYmtkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk0MDk5ODYsImV4cCI6MTk5NDk4NTk4Nn0.UVd79YRgO2lPHUXAuZN1m8vj0IA-Wl2Dn3-FoTsjguI";
+
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    var databaseContents;
+
+    async function loadData() {
+      const { data, error } = await _supabase.from("exhibit").select("*");
+
+      if (!error) {
+        databaseContents = data;
+        //console.log(data);
+
+        databaseContents.sort((a, b) => a.exhibit_id - b.exhibit_id);
+        console.log(databaseContents);
+      }
+    }
+    loadData();
+
     var modal = document.getElementById("modal1");
     var title = document.getElementById("modalTitle");
+    var image = document.getElementById("modalImage");
+    var description = document.getElementById("modalDescription");
     var span = document.getElementById("close");
 
     // Display the modal.
     function displayModal(titleData) {
-      title.innerText = titleData;
+      title.innerText = databaseContents[titleData].exhibit_name;
+      description.innerText = databaseContents[titleData].exhibit_description;
+      if (databaseContents[titleData].img_url != null)
+      {
+        image.style.display = "block";
+        //image.style.height = databaseContents[titleData].img_url.naturalHeight;
+        image.src = databaseContents[titleData].img_url;
+      }
+      else
+      {
+        image.style.display = "none";
+      }
       modal.style.display = "block";
     }
 
@@ -558,7 +567,7 @@
       modalInfo.style.display = "none";
     };
 
-    var modalLang = document.getElementById("modalLang");
+    /*var modalLang = document.getElementById("modalLang");
     var spanLang = document.getElementById("closeLang");
 
     // Display the modal.
@@ -569,7 +578,7 @@
     // Hides the modal on clicking the X.
     spanLang.onclick = function () {
       modalLang.style.display = "none";
-    };
+    };*/
 
     // Hides the modal when clicking outside it.
     window.onclick = function (event) {
@@ -579,9 +588,9 @@
       if (event.target == modalInfo) {
         modalInfo.style.display = "none";
       }
-      if (event.target == modalLang) {
+      /*if (event.target == modalLang) {
         modalLang.style.display = "none";
-      }
+      }*/
     };
   </script>
 </html>

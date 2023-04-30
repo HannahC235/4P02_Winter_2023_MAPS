@@ -1,12 +1,15 @@
 import supabase from "../config/supabaseClient"
-import {Link} from "react-router-dom";
-import {useEffect, useState } from "react";
+import {Link, useNavigate, Navigate} from "react-router-dom";
+import { useEffect, useState } from "react";
 import Table from "../components/exhibit_table"
+import Signout from "../components/signout";
 
 
 const ExhibitList = () => {
   const [error, setError] = useState(null)
   const [exhibits, setExhibits] = useState(null)
+  
+  const navigate = useNavigate
   
 
   useEffect(() => {
@@ -27,6 +30,7 @@ const ExhibitList = () => {
 
     fetchExhibits()
   })
+
 
   return (
 
@@ -54,15 +58,19 @@ const ExhibitList = () => {
             {exhibits.map(exhibit => (
               <Table key = {exhibit.id} exhibit={exhibit}/>
 
-            ))}
-            </div>
-              
+          ))}
           </div>
-        )}
+            
+        </div>
+      )}
+      <div className="main_div" id = "logout">
+        <span onClick={Signout}><h4>Logout</h4></span>
       </div>
+    </div>
 
-    )
-  }
+  )
+  
+}
   
   export default ExhibitList
         
